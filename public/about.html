@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="About The Last Library — a CodePath project exploring post-apocalyptic fiction."
+    />
+    <title>About — The Last Library</title>
+
+    <!-- PicoCSS v2: classless semantic CSS framework -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <!-- Custom post-apocalyptic theme overrides -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <!-- ======================================================
+         SITE HEADER & NAVIGATION
+         aria-current="page" marks About as the active link.
+         ====================================================== -->
+    <header class="site-header">
+      <div class="container">
+        <nav>
+          <ul>
+            <li>
+              <a href="/index.html" class="site-logo">The Last Library</a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/books.html">Books</a></li>
+            <li><a href="/authors.html">Authors</a></li>
+            <li><a href="/about.html" aria-current="page">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <!-- ====================================================
+           PAGE HEADER
+           ==================================================== -->
+      <section class="page-header">
+        <h1>About The Last Library</h1>
+        <p>
+          Learn about the project, the genre, and why these stories matter.
+        </p>
+      </section>
+
+      <!-- ====================================================
+           ABOUT THE PROJECT
+           ==================================================== -->
+      <article class="about-section">
+        <h2>The Project</h2>
+        <p>
+          The Last Library is a web application built as the Unit 1 project for
+          <strong>CodePath Advanced Web Development</strong>. It serves as a
+          curated, informational repository for post-apocalyptic fiction — one
+          of the most thought-provoking and enduring genres in modern literature.
+        </p>
+        <p>
+          The project demonstrates core full-stack web development skills:
+          building a <strong>Node.js / Express</strong> backend to serve static
+          files, structuring <strong>semantic HTML5</strong>, applying responsive
+          layouts with <strong>PicoCSS</strong>, and writing
+          <strong>vanilla JavaScript</strong> for dynamic, interactive features
+          — including real-time search and multi-key sort — entirely without
+          frameworks.
+        </p>
+        <p>
+          Every book card, author card, and featured section on this site is
+          generated at runtime from a single shared JavaScript data file
+          (<code>/js/books.js</code>), keeping the data and the presentation
+          cleanly separated.
+        </p>
+      </article>
+
+      <hr />
+
+      <!-- ====================================================
+           WHAT IS POST-APOCALYPTIC FICTION?
+           ==================================================== -->
+      <article class="about-section">
+        <h2>What Is Post-Apocalyptic Fiction?</h2>
+        <p>
+          Post-apocalyptic fiction is a subgenre of speculative fiction that
+          explores life after a catastrophic event has devastated or destroyed
+          civilization. These events range from nuclear war and engineered
+          pandemics to ecological collapse, asteroid impact, and technological
+          singularity.
+        </p>
+        <p>
+          Unlike <em>dystopian</em> fiction — which typically portrays a
+          functioning but oppressive society — post-apocalyptic stories focus on
+          the immediate and long-term aftermath of collapse: survival, mourning,
+          rebuilding, and the fundamental question of what makes us human when
+          all the structures we rely on are gone.
+        </p>
+        <p>
+          At its core, the genre asks: <em>What would we do when everything
+          falls apart?</em> And perhaps more importantly: <em>What is worth
+          preserving?</em>
+        </p>
+
+        <h3>Why It Matters</h3>
+        <p>
+          Post-apocalyptic fiction holds up a mirror to our present anxieties.
+          Climate change, pandemic, political polarization, runaway
+          biotechnology — the best books in this genre take current fears and
+          extrapolate them to their logical extremes, helping us process,
+          understand, and even prepare for an uncertain future.
+        </p>
+        <p>
+          Octavia Butler's <em>Parable of the Sower</em> (1993) was eerily
+          prescient about social collapse driven by climate and inequality.
+          Emily St. John Mandel's <em>Station Eleven</em> (2014) gained a
+          devastating new resonance after COVID-19. These are not merely
+          entertainment — they are thought experiments in resilience, written
+          by authors willing to follow their premises all the way down.
+        </p>
+
+        <h3>Key Themes in the Genre</h3>
+        <ul>
+          <li>
+            <strong>Survival vs. Civilization:</strong> The tension between bare
+            survival and maintaining culture, law, and community when resources
+            are scarce.
+          </li>
+          <li>
+            <strong>Hope and Despair:</strong> Even in the darkest scenarios,
+            characters search for meaning, connection, and a reason to keep
+            going.
+          </li>
+          <li>
+            <strong>Human Nature:</strong> When social structures collapse, what
+            remains? Selfishness, solidarity, or both at once?
+          </li>
+          <li>
+            <strong>Memory and Preservation:</strong> Art, music, books, and
+            stories become precious beyond their entertainment value — sometimes
+            the most important things left.
+          </li>
+          <li>
+            <strong>Responsibility:</strong> Who caused the end of the world?
+            How do survivors live with that knowledge — and avoid repeating it?
+          </li>
+          <li>
+            <strong>Cycles of History:</strong> Several books in this collection
+            (notably <em>A Canticle for Leibowitz</em>) ask whether civilization
+            is condemned to rise, destroy itself, and begin again.
+          </li>
+        </ul>
+      </article>
+
+      <hr />
+
+      <!-- ====================================================
+           TECHNOLOGY STACK
+           ==================================================== -->
+      <article class="about-section">
+        <h2>Technology Stack</h2>
+        <p>
+          The Last Library is intentionally lightweight — no build tools,
+          no bundlers, no frontend frameworks. Everything runs on a single
+          Express server and plain HTML, CSS, and JavaScript files.
+        </p>
+
+        <div class="tech-grid">
+
+          <!-- Backend -->
+          <div class="tech-card">
+            <h3>Backend</h3>
+            <ul>
+              <li><strong>Node.js</strong> — JavaScript runtime</li>
+              <li><strong>Express 5</strong> — HTTP server &amp; static file serving</li>
+              <li><strong>No database</strong> — data lives in a JS file</li>
+            </ul>
+          </div>
+
+          <!-- Frontend -->
+          <div class="tech-card">
+            <h3>Frontend</h3>
+            <ul>
+              <li><strong>HTML5</strong> — Semantic markup throughout</li>
+              <li><strong>Vanilla JavaScript</strong> — No frameworks</li>
+              <li><strong>CSS3</strong> — Custom properties &amp; Grid</li>
+            </ul>
+          </div>
+
+          <!-- Styling -->
+          <div class="tech-card">
+            <h3>Styling</h3>
+            <ul>
+              <li><strong>PicoCSS v2</strong> — Classless CSS framework</li>
+              <li><strong>CSS Custom Properties</strong> — Theme overrides</li>
+              <li><strong>CSS Grid &amp; Flexbox</strong> — Responsive layout</li>
+            </ul>
+          </div>
+
+        </div>
+      </article>
+
+      <hr />
+
+      <!-- ====================================================
+           PROJECT INFORMATION
+           Definition list with course / project metadata.
+           ==================================================== -->
+      <article class="about-section">
+        <h2>Project Information</h2>
+        <dl>
+          <dt>Course</dt>
+          <dd>CodePath Advanced Web Development</dd>
+
+          <dt>Unit</dt>
+          <dd>Unit 1 &mdash; Foundations</dd>
+
+          <dt>Project Name</dt>
+          <dd>The Last Library</dd>
+
+          <dt>Repository Name</dt>
+          <dd>the-last-library</dd>
+
+          <dt>Year</dt>
+          <dd>2026</dd>
+
+          <dt>GitHub</dt>
+          <dd>
+            <a
+              href="https://github.com/Mig1a/Post-Apocalyptic-Book"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/Mig1a/Post-Apocalyptic-Book
+            </a>
+          </dd>
+
+          <dt>Tech Stack</dt>
+          <dd>Node.js, Express, HTML, CSS, Vanilla JS, PicoCSS</dd>
+
+          <dt>Books in Collection</dt>
+          <dd>14</dd>
+
+          <dt>Authors Featured</dt>
+          <dd>6</dd>
+        </dl>
+      </article>
+
+    </main>
+
+    <!-- ========================================================
+         SITE FOOTER
+         ======================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div>
+            <strong>The Last Library</strong>
+            <p>A curated repository of post-apocalyptic literature.</p>
+          </div>
+
+          <nav aria-label="Footer navigation">
+            <p>Pages</p>
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/books.html">Books</a></li>
+              <li><a href="/authors.html">Authors</a></li>
+              <li><a href="/about.html">About</a></li>
+            </ul>
+          </nav>
+
+          <div>
+            <strong>Built With</strong>
+            <ul>
+              <li>Node.js &amp; Express</li>
+              <li>PicoCSS</li>
+              <li>Vanilla JavaScript</li>
+            </ul>
+          </div>
+
+        </div>
+        <hr />
+        <p class="footer-credit">
+          Built for CodePath Advanced Web Development &mdash; Unit 1 Project
+          &mdash; 2026
+        </p>
+      </div>
+    </footer>
+
+    <!-- books.js and script.js included for nav consistency;
+         this page has no dynamic content to render -->
+    <script src="/js/books.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

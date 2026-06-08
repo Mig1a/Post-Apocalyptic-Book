@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse all 14 post-apocalyptic books in The Last Library collection. Search by title or sort by year and rating."
+    />
+    <title>Books — The Last Library</title>
+
+    <!-- PicoCSS v2: classless semantic CSS framework -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <!-- Custom post-apocalyptic theme overrides -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <!-- ======================================================
+         SITE HEADER & NAVIGATION
+         aria-current="page" marks Books as the active link.
+         ====================================================== -->
+    <header class="site-header">
+      <div class="container">
+        <nav>
+          <ul>
+            <li>
+              <a href="/index.html" class="site-logo">The Last Library</a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/books.html" aria-current="page">Books</a></li>
+            <li><a href="/authors.html">Authors</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <!-- ====================================================
+           PAGE HEADER
+           Title and subtitle for the books collection page.
+           ==================================================== -->
+      <section class="page-header">
+        <h1>The Collection</h1>
+        <p>
+          Fourteen essential works of post-apocalyptic fiction, preserved for
+          posterity.
+        </p>
+      </section>
+
+      <!-- ====================================================
+           SEARCH & SORT CONTROLS
+           #search-input: live title filter (keyup listener in script.js)
+           #sort-select:  sort by title / year / rating (change listener)
+           #books-count:  aria-live region updated with result count
+           ==================================================== -->
+      <section class="controls-bar" aria-label="Book filters">
+
+        <!-- Search input -->
+        <div class="search-wrapper">
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search by title…"
+            aria-label="Search books by title"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Sort select -->
+        <div class="sort-wrapper">
+          <select id="sort-select" aria-label="Sort books by">
+            <option value="rating">Sort by Rating (High &rarr; Low)</option>
+            <option value="title">Sort by Title (A &rarr; Z)</option>
+            <option value="year">Sort by Year (Newest First)</option>
+          </select>
+        </div>
+
+        <!-- Live count badge — updated by renderBooks() in script.js -->
+        <span
+          id="books-count"
+          class="books-count"
+          role="status"
+          aria-live="polite"
+        ></span>
+
+      </section>
+
+      <!-- ====================================================
+           BOOKS GRID
+           All 14 book cards are injected here by script.js
+           via initBooksPage() → renderBooks() → buildBookCard().
+           Searching and sorting replace the grid contents in place.
+           ==================================================== -->
+      <section aria-label="Books collection">
+        <div id="books-grid" class="books-grid"></div>
+      </section>
+
+    </main>
+
+    <!-- ========================================================
+         SITE FOOTER
+         ======================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div>
+            <strong>The Last Library</strong>
+            <p>A curated repository of post-apocalyptic literature.</p>
+          </div>
+
+          <nav aria-label="Footer navigation">
+            <p>Pages</p>
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/books.html">Books</a></li>
+              <li><a href="/authors.html">Authors</a></li>
+              <li><a href="/about.html">About</a></li>
+            </ul>
+          </nav>
+
+          <div>
+            <strong>Built With</strong>
+            <ul>
+              <li>Node.js &amp; Express</li>
+              <li>PicoCSS</li>
+              <li>Vanilla JavaScript</li>
+            </ul>
+          </div>
+
+        </div>
+        <hr />
+        <p class="footer-credit">
+          Built for CodePath Advanced Web Development &mdash; Unit 1 Project
+          &mdash; 2026
+        </p>
+      </div>
+    </footer>
+
+    <!-- Load shared data first, then the page logic -->
+    <script src="/js/books.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

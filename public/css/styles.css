@@ -1,0 +1,1008 @@
+/* ============================================================
+   The Last Library — Custom Stylesheet
+   Extends PicoCSS v2 with a post-apocalyptic dark theme.
+
+   Table of Contents:
+     1. Theme Variables
+     2. Base & Typography
+     3. Navigation
+     4. Hero Section
+     5. Intro / Stats Section
+     6. Featured Books Section (home page)
+     7. Call-to-Action Section
+     8. Page Header (inner pages)
+     9. Controls Bar (search & sort)
+    10. Books Grid
+    11. Authors Grid
+    12. About Page
+    13. Footer
+    14. Responsive Design
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. THEME VARIABLES
+   Override PicoCSS custom properties with our amber/char palette.
+   --ll-* are local to this project; --pico-* override the library.
+   ------------------------------------------------------------ */
+:root {
+  /* Amber accent — evokes firelight, ash, and ruin */
+  --ll-primary: #d4831a;
+  --ll-primary-light: #e89a30;
+  --ll-primary-dark: #b36b12;
+
+  /* Surface layers */
+  --ll-bg: #0e0e10;
+  --ll-card-bg: #1c1c1e;
+  --ll-card-border: #2e2e30;
+  --ll-card-border-hover: #d4831a;
+
+  /* Text hierarchy */
+  --ll-text: #e8e8e2;
+  --ll-text-secondary: #adadaa;
+  --ll-text-muted: #6e6e72;
+
+  /* Layout tokens */
+  --ll-section-y: 5rem;
+  --ll-radius: 10px;
+
+  /* PicoCSS overrides */
+  --pico-primary: #d4831a;
+  --pico-primary-hover: #e89a30;
+  --pico-primary-focus: rgba(212, 131, 26, 0.3);
+  --pico-primary-inverse: #fff;
+}
+
+/* ------------------------------------------------------------
+   2. BASE & TYPOGRAPHY
+   ------------------------------------------------------------ */
+body {
+  background-color: var(--ll-bg);
+  color: var(--ll-text);
+  /* Serif body text fits the "old book" theme */
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Sans-serif headings for contrast and legibility */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--ll-text);
+}
+
+/* PicoCSS hgroup: the <p> before a heading becomes an eyebrow label */
+hgroup > p {
+  color: var(--ll-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+/* Remove default bottom margin from PicoCSS article elements when used as cards */
+article.book-card,
+article.featured-card,
+article.author-card {
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   3. NAVIGATION
+   Sticky header with frosted-glass effect.
+   ------------------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(14, 14, 16, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--ll-card-border);
+}
+
+.site-header .container {
+  /* Shrink vertical padding for a tighter header */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.site-header nav {
+  padding: 0.8rem 0;
+}
+
+/* Logo / brand name */
+.site-logo {
+  text-decoration: none !important;
+  font-size: 1.05rem;
+  font-family: system-ui, sans-serif;
+  color: var(--ll-primary) !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Nav links */
+.site-header nav a {
+  text-decoration: none;
+  color: var(--ll-text-secondary);
+  font-size: 0.875rem;
+  font-family: system-ui, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+  color: var(--ll-primary);
+}
+
+/* ------------------------------------------------------------
+   4. HERO SECTION
+   Full-viewport-height header with atmospheric gradient glow.
+   No external image dependency — pure CSS gradient art.
+   ------------------------------------------------------------ */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  background-color: var(--ll-bg);
+  /* Warm radial glows simulate firelight in a dark wasteland */
+  background-image: radial-gradient(
+      ellipse at 25% 60%,
+      rgba(212, 131, 26, 0.18) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 75% 35%,
+      rgba(180, 60, 20, 0.12) 0%,
+      transparent 55%
+    ),
+    linear-gradient(180deg, rgba(14, 14, 16, 0) 0%, rgba(14, 14, 16, 0.6) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle horizontal scan-line texture — evokes old CRT / wartime screens */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.05) 3px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative; /* sit above the ::before pseudo-element */
+  max-width: 820px;
+}
+
+.hero-eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  color: var(--ll-primary);
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.03;
+  margin-bottom: 1.5rem;
+  color: #f5f5f0;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--ll-text-secondary);
+  max-width: 580px;
+  margin: 0 auto 2.75rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Override PicoCSS button defaults for hero CTAs */
+.hero-actions [role="button"] {
+  padding: 0.875rem 2rem;
+  font-size: 0.95rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-actions [role="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 131, 26, 0.3);
+}
+
+/* ------------------------------------------------------------
+   5. INTRO / STATS SECTION (home page)
+   Two-column layout: text on left, stat cards on right.
+   ------------------------------------------------------------ */
+.intro-section {
+  padding: var(--ll-section-y) 0;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.intro-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro-text p {
+  color: var(--ll-text-secondary);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.intro-text [role="button"] {
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+}
+
+/* 2×2 grid of stat cards */
+.intro-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.stat-card {
+  background: var(--ll-card-bg);
+  border: 1px solid var(--ll-card-border);
+  border-radius: var(--ll-radius);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: border-color 0.25s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--ll-primary);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--ll-primary);
+  font-family: system-ui, sans-serif;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ll-text-muted);
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   6. FEATURED BOOKS SECTION (home page)
+   ------------------------------------------------------------ */
+.featured-section {
+  padding: var(--ll-section-y) 0;
+  background: rgba(255, 255, 255, 0.018);
+  border-top: 1px solid var(--ll-card-border);
+  border-bottom: 1px solid var(--ll-card-border);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Responsive grid that auto-fills with minimum 240px columns */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Featured card — compact version used only on the home page */
+.featured-card {
+  background: var(--ll-card-bg);
+  border: 1px solid var(--ll-card-border);
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--ll-card-border-hover);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+}
+
+.featured-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  /* Desaturate covers slightly to match the dark theme */
+  filter: saturate(0.65);
+  transition: filter 0.3s ease;
+}
+
+.featured-card:hover img {
+  filter: saturate(1);
+}
+
+.featured-info {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.featured-info h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin: 0;
+  color: #f0f0ec;
+  line-height: 1.3;
+  font-family: system-ui, sans-serif;
+}
+
+.featured-info .book-author {
+  font-size: 0.82rem;
+  color: var(--ll-text-muted);
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.featured-info .book-rating {
+  font-size: 0.82rem;
+  color: var(--ll-primary);
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.featured-info p {
+  font-size: 0.8rem;
+  color: var(--ll-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section-footer {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.section-footer [role="button"] {
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   7. CALL-TO-ACTION SECTION (home page bottom)
+   ------------------------------------------------------------ */
+.cta-section {
+  padding: var(--ll-section-y) 0;
+}
+
+.cta-card {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 131, 26, 0.1) 0%,
+    rgba(212, 131, 26, 0.03) 100%
+  );
+  border: 1px solid rgba(212, 131, 26, 0.3);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cta-card h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  margin-bottom: 1rem;
+}
+
+.cta-card p {
+  color: var(--ll-text-secondary);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+}
+
+.cta-card [role="button"] {
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   8. PAGE HEADER (books, authors, about pages)
+   Consistent top-of-page title area for inner pages.
+   ------------------------------------------------------------ */
+.page-header {
+  padding: 4rem 0 2rem;
+  border-bottom: 1px solid var(--ll-card-border);
+  margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.4rem;
+}
+
+.page-header p {
+  color: var(--ll-text-secondary);
+  font-size: 1.05rem;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   9. CONTROLS BAR (books page search + sort)
+   ------------------------------------------------------------ */
+.controls-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Search input grows to fill available width */
+.search-wrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-wrapper input[type="search"] {
+  width: 100%;
+  margin: 0;
+}
+
+/* Sort select keeps its natural width */
+.sort-wrapper select {
+  margin: 0;
+}
+
+/* Live count badge */
+.books-count {
+  font-size: 0.8rem;
+  color: var(--ll-text-muted);
+  white-space: nowrap;
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   10. BOOKS GRID (books page)
+   ------------------------------------------------------------ */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 1.75rem;
+  padding-bottom: 5rem;
+}
+
+/* Full book card used on the books page */
+.book-card {
+  background: var(--ll-card-bg);
+  border: 1px solid var(--ll-card-border);
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--ll-card-border-hover);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+}
+
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.65);
+  transition: filter 0.3s ease;
+}
+
+.book-card:hover img {
+  filter: saturate(1);
+}
+
+.book-info {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.book-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0;
+  color: #f0f0ec;
+  line-height: 1.3;
+  font-family: system-ui, sans-serif;
+}
+
+.book-author {
+  font-size: 0.83rem;
+  color: var(--ll-text-muted);
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* Row containing year badge and star rating */
+.book-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.2rem 0;
+}
+
+.book-year {
+  font-size: 0.78rem;
+  color: var(--ll-text-muted);
+  font-family: system-ui, sans-serif;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+}
+
+.book-rating {
+  font-size: 0.83rem;
+  color: var(--ll-primary);
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+}
+
+/* Clamp description to 4 lines to keep cards uniform height */
+.book-description {
+  font-size: 0.8rem;
+  color: var(--ll-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Empty search results message */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--ll-text-muted);
+  font-family: system-ui, sans-serif;
+}
+
+.no-results p {
+  font-size: 1rem;
+}
+
+/* ------------------------------------------------------------
+   11. AUTHORS GRID
+   ------------------------------------------------------------ */
+.authors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+/* Author card — horizontal layout with photo on the left */
+.author-card {
+  background: var(--ll-card-bg);
+  border: 1px solid var(--ll-card-border);
+  border-radius: var(--ll-radius);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 2rem;
+  align-items: start;
+  transition: border-color 0.3s ease;
+}
+
+.author-card:hover {
+  border-color: var(--ll-card-border-hover);
+}
+
+/* Circular author portrait */
+.author-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ll-card-border);
+  transition: border-color 0.3s ease;
+  display: block;
+  /* Desaturate to match dark theme; restore on hover */
+  filter: saturate(0.5) brightness(0.85);
+  transition: filter 0.3s ease, border-color 0.3s ease;
+}
+
+.author-card:hover .author-photo {
+  border-color: var(--ll-primary);
+  filter: saturate(0.9) brightness(1);
+}
+
+.author-info h3 {
+  font-size: 1.3rem;
+  margin: 0 0 0.35rem;
+  color: #f0f0ec;
+  font-family: system-ui, sans-serif;
+}
+
+/* Nationality + lifespan label */
+.author-meta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ll-primary);
+  margin: 0 0 0.5rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.author-books {
+  font-size: 0.83rem;
+  color: var(--ll-text-muted);
+  margin: 0 0 0.75rem;
+  font-family: system-ui, sans-serif;
+}
+
+.author-bio {
+  font-size: 0.875rem;
+  color: var(--ll-text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Informational note below the authors grid */
+.authors-note {
+  background: rgba(212, 131, 26, 0.07);
+  border-left: 3px solid var(--ll-primary);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.5rem;
+  margin-bottom: 4rem;
+  font-size: 0.85rem;
+  color: var(--ll-text-secondary);
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   12. ABOUT PAGE
+   ------------------------------------------------------------ */
+.about-section {
+  margin-bottom: 3rem;
+}
+
+.about-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.85rem;
+  color: #f0f0ec;
+}
+
+.about-section h3 {
+  font-size: 1.15rem;
+  margin: 1.75rem 0 0.75rem;
+  color: var(--ll-primary);
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.about-section p {
+  color: var(--ll-text-secondary);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.about-section ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-section li {
+  color: var(--ll-text-secondary);
+  line-height: 1.75;
+  margin-bottom: 0.5rem;
+}
+
+/* Technology stack grid */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tech-card {
+  background: var(--ll-card-bg);
+  border: 1px solid var(--ll-card-border);
+  border-radius: var(--ll-radius);
+  padding: 1.5rem;
+  transition: border-color 0.25s ease;
+}
+
+.tech-card:hover {
+  border-color: var(--ll-card-border-hover);
+}
+
+/* Tech category label inside tech card */
+.tech-card h3 {
+  font-size: 0.72rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ll-primary) !important;
+  margin: 0 0 1rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.tech-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-card li {
+  font-size: 0.865rem;
+  color: var(--ll-text-secondary) !important;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--ll-card-border);
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-family: system-ui, sans-serif;
+}
+
+.tech-card li:last-child {
+  border-bottom: none;
+}
+
+/* Definition list for project metadata */
+.about-section dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.6rem 2rem;
+  margin-top: 1rem;
+}
+
+.about-section dt {
+  font-weight: 700;
+  color: var(--ll-text-muted);
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding-top: 0.15rem;
+  align-self: start;
+}
+
+.about-section dd {
+  color: var(--ll-text-secondary);
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.about-section dd a {
+  color: var(--ll-primary);
+}
+
+/* ------------------------------------------------------------
+   13. FOOTER
+   ------------------------------------------------------------ */
+.site-footer {
+  background: #0a0a0c;
+  border-top: 1px solid var(--ll-card-border);
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+
+/* Three-column footer layout */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-grid strong {
+  display: block;
+  font-family: system-ui, sans-serif;
+  color: var(--ll-text);
+  margin-bottom: 0.5rem;
+}
+
+.footer-grid > div > p {
+  color: var(--ll-text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.7;
+  font-family: system-ui, sans-serif;
+}
+
+/* Footer nav section heading */
+.footer-grid nav > p {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ll-text);
+  font-family: system-ui, sans-serif;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Footer lists */
+.footer-grid nav ul,
+.footer-grid > div:last-child ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-grid nav li,
+.footer-grid > div:last-child li {
+  padding: 0.3rem 0;
+  font-size: 0.855rem;
+  color: var(--ll-text-muted);
+  font-family: system-ui, sans-serif;
+}
+
+.footer-grid nav a {
+  color: var(--ll-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-grid nav a:hover {
+  color: var(--ll-primary);
+}
+
+.footer-credit {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ll-text-muted);
+  margin: 1.5rem 0 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   14. RESPONSIVE DESIGN
+   ------------------------------------------------------------ */
+
+/* --- Tablet (≤ 768px) --- */
+@media (max-width: 768px) {
+  /* Stack intro section */
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Spread stats across 4 columns at tablet width */
+  .intro-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Collapse footer to two columns */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Stack author photo above bio */
+  .author-card {
+    grid-template-columns: 1fr;
+  }
+
+  .author-photo {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* Stack definition list on tablet */
+  .about-section dl {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .about-section dt {
+    margin-top: 0.75rem;
+  }
+
+  .about-section dt:first-child {
+    margin-top: 0;
+  }
+}
+
+/* --- Mobile (≤ 480px) --- */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 60vh;
+    padding: 4rem 1rem;
+  }
+
+  /* Drop to 2-column stats on small screens */
+  .intro-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Stack controls vertically */
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-wrapper select {
+    width: 100%;
+  }
+
+  /* Single-column book grid on mobile */
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single-column featured grid on mobile */
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single-column footer on mobile */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Single-column tech grid on mobile */
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "the-last-library",
+  "version": "1.0.0",
+  "description": "A curated repository of post-apocalyptic books — CodePath Advanced Web Development Unit 1 Project",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mig1a/Post-Apocalyptic-Book.git"
+  },
+  "keywords": [
+    "books",
+    "post-apocalyptic",
+    "library",
+    "codepath"
+  ],
+  "author": "Million Aboye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mig1a/Post-Apocalyptic-Book/issues"
+  },
+  "homepage": "https://github.com/Mig1a/Post-Apocalyptic-Book#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

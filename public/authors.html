@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet the visionary authors behind the post-apocalyptic books in The Last Library collection."
+    />
+    <title>Authors — The Last Library</title>
+
+    <!-- PicoCSS v2: classless semantic CSS framework -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <!-- Custom post-apocalyptic theme overrides -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <!-- ======================================================
+         SITE HEADER & NAVIGATION
+         aria-current="page" marks Authors as the active link.
+         ====================================================== -->
+    <header class="site-header">
+      <div class="container">
+        <nav>
+          <ul>
+            <li>
+              <a href="/index.html" class="site-logo">The Last Library</a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/books.html">Books</a></li>
+            <li><a href="/authors.html" aria-current="page">Authors</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <!-- ====================================================
+           PAGE HEADER
+           ==================================================== -->
+      <section class="page-header">
+        <h1>The Authors</h1>
+        <p>
+          The visionary writers who imagined the end of the world — and what
+          comes after.
+        </p>
+      </section>
+
+      <!-- ====================================================
+           AUTHORS GRID
+           Six author cards are injected here by script.js
+           via initAuthorsPage() → buildAuthorCard().
+           Each card shows: portrait, name, nationality & lifespan,
+           their books in this collection, and a biography.
+           ==================================================== -->
+      <section aria-label="Featured authors">
+        <div id="authors-grid" class="authors-grid"></div>
+      </section>
+
+      <!-- ====================================================
+           INFORMATIONAL NOTE
+           Explains why only six authors are featured.
+           ==================================================== -->
+      <aside class="authors-note">
+        <strong>Note:</strong> The Last Library features six of the most
+        influential authors in post-apocalyptic fiction. Author entries reflect
+        only the books represented in our curated collection — each author has
+        a much larger body of work worth exploring.
+      </aside>
+
+    </main>
+
+    <!-- ========================================================
+         SITE FOOTER
+         ======================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div>
+            <strong>The Last Library</strong>
+            <p>A curated repository of post-apocalyptic literature.</p>
+          </div>
+
+          <nav aria-label="Footer navigation">
+            <p>Pages</p>
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/books.html">Books</a></li>
+              <li><a href="/authors.html">Authors</a></li>
+              <li><a href="/about.html">About</a></li>
+            </ul>
+          </nav>
+
+          <div>
+            <strong>Built With</strong>
+            <ul>
+              <li>Node.js &amp; Express</li>
+              <li>PicoCSS</li>
+              <li>Vanilla JavaScript</li>
+            </ul>
+          </div>
+
+        </div>
+        <hr />
+        <p class="footer-credit">
+          Built for CodePath Advanced Web Development &mdash; Unit 1 Project
+          &mdash; 2026
+        </p>
+      </div>
+    </footer>
+
+    <!-- Load shared data first, then the page logic -->
+    <script src="/js/books.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

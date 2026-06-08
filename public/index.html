@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The Last Library — a curated repository of the greatest post-apocalyptic books ever written."
+    />
+    <title>The Last Library — Post-Apocalyptic Books</title>
+
+    <!-- PicoCSS v2: classless semantic CSS framework -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <!-- Custom post-apocalyptic theme overrides -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <!-- ======================================================
+         SITE HEADER & NAVIGATION
+         Sticky header with logo and page links.
+         aria-current="page" marks the active link for
+         accessibility and is styled amber in styles.css.
+         ====================================================== -->
+    <header class="site-header">
+      <div class="container">
+        <nav>
+          <!-- Brand / logo on the left -->
+          <ul>
+            <li>
+              <a href="/index.html" class="site-logo">The Last Library</a>
+            </li>
+          </ul>
+          <!-- Page links on the right -->
+          <ul>
+            <li><a href="/index.html" aria-current="page">Home</a></li>
+            <li><a href="/books.html">Books</a></li>
+            <li><a href="/authors.html">Authors</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ====================================================
+           HERO SECTION
+           Full-viewport introduction with headline, subtitle,
+           and two CTA buttons. Background is pure CSS gradient
+           (no external image dependency).
+           ==================================================== -->
+      <section class="hero">
+        <div class="hero-content">
+          <span class="hero-eyebrow">A CodePath Project</span>
+          <h1>The Last Library</h1>
+          <p class="hero-subtitle">
+            Preserving the stories that survived the end of the world.<br />
+            Discover the greatest works of post-apocalyptic fiction.
+          </p>
+          <div class="hero-actions">
+            <a href="/books.html" role="button">Browse the Collection</a>
+            <a href="/about.html" role="button" class="outline">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           INTRO / STATS SECTION
+           Short description of the site on the left; four
+           at-a-glance stat cards on the right.
+           ==================================================== -->
+      <section class="intro-section container">
+        <div class="intro-grid">
+
+          <!-- Left: text introduction -->
+          <div class="intro-text">
+            <hgroup>
+              <p>What is The Last Library?</p>
+              <h2>Stories of Survival</h2>
+            </hgroup>
+            <p>
+              The Last Library is a curated collection of the finest
+              post-apocalyptic literature. From nuclear wastelands to
+              plague-ravaged worlds, these books explore humanity's darkest
+              moments — and its enduring will to survive.
+            </p>
+            <p>
+              Whether you're a longtime fan of the genre or just discovering
+              it, you'll find your next harrowing adventure here.
+            </p>
+            <a href="/books.html" role="button" class="outline">
+              Explore All Books &rarr;
+            </a>
+          </div>
+
+          <!-- Right: four stat cards -->
+          <div class="intro-stats">
+            <div class="stat-card">
+              <span class="stat-number">14</span>
+              <span class="stat-label">Curated Books</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Featured Authors</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">70+</span>
+              <span class="stat-label">Years of Stories</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">4.0+</span>
+              <span class="stat-label">Avg. Rating</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================
+           FEATURED BOOKS SECTION
+           The top-4-rated books are injected here by script.js
+           via initHomePage() → buildFeaturedCard().
+           ==================================================== -->
+      <section class="featured-section">
+        <div class="container">
+          <hgroup class="section-header">
+            <p>Top Rated</p>
+            <h2>Featured Books</h2>
+          </hgroup>
+
+          <!-- Cards are rendered dynamically by script.js -->
+          <div id="featured-books" class="featured-grid" aria-live="polite"></div>
+
+          <div class="section-footer">
+            <a href="/books.html" role="button" class="outline">
+              View All 14 Books &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           CALL-TO-ACTION SECTION
+           Bottom-of-page nudge to visit the full book list.
+           ==================================================== -->
+      <section class="cta-section container">
+        <div class="cta-card">
+          <h2>Ready to venture into the wasteland?</h2>
+          <p>
+            Browse our full collection, filter by title, and sort by
+            publication year or reader rating.
+          </p>
+          <a href="/books.html" role="button">Enter the Collection</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========================================================
+         SITE FOOTER
+         Shared across all pages. Three-column layout: brand,
+         page links, and tech stack info.
+         ======================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+
+          <!-- Brand column -->
+          <div>
+            <strong>The Last Library</strong>
+            <p>A curated repository of post-apocalyptic literature.</p>
+          </div>
+
+          <!-- Navigation column -->
+          <nav aria-label="Footer navigation">
+            <p>Pages</p>
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/books.html">Books</a></li>
+              <li><a href="/authors.html">Authors</a></li>
+              <li><a href="/about.html">About</a></li>
+            </ul>
+          </nav>
+
+          <!-- Tech column -->
+          <div>
+            <strong>Built With</strong>
+            <ul>
+              <li>Node.js &amp; Express</li>
+              <li>PicoCSS</li>
+              <li>Vanilla JavaScript</li>
+            </ul>
+          </div>
+
+        </div>
+        <hr />
+        <p class="footer-credit">
+          Built for CodePath Advanced Web Development &mdash; Unit 1 Project
+          &mdash; 2026
+        </p>
+      </div>
+    </footer>
+
+    <!-- Load shared data first, then the page logic -->
+    <script src="/js/books.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
