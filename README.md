@@ -1,117 +1,67 @@
-# The Last Library
+# WEB103 Project 1 - *The Last Library*
 
-A curated repository of post-apocalyptic books — built for CodePath Advanced Web Development, Unit 1.
+Submitted by: **Million Aboye**
 
-## Project Overview
+About this web app: **The Last Library is a curated repository of post-apocalyptic books. Users can browse 14 titles, search by name, sort by rating or year, and click into individual book detail pages — each served at a unique URL like `/books/the-road`. The site also features author profiles and an about page explaining the genre.**
 
-The Last Library is a multi-page informational website that helps users discover and explore the greatest works of post-apocalyptic fiction. It features 14 curated books, 6 featured authors, real-time search and sort, and a consistent post-apocalyptic dark theme powered by PicoCSS.
+Time spent: **X** hours
 
-## Features
+## Required Features
 
-- **Home Page** — Hero section, at-a-glance stats, and the top-4-rated books rendered dynamically
-- **Books Page** — All 14 books in a responsive card grid with live title search and sort by rating, title, or publication year
-- **Authors Page** — Six featured author cards with portrait, biography, nationality, and lifespan
-- **About Page** — Project overview, what post-apocalyptic fiction is, tech stack breakdown, and project metadata
-- **Responsive design** — Mobile-friendly layout down to 320 px using CSS Grid and Flexbox
-- **Dark theme** — Post-apocalyptic amber-on-charcoal palette built on PicoCSS v2 custom properties
-- **No frameworks** — Vanilla HTML, CSS, and JavaScript only on the frontend
+The following **required** functionality is completed:
 
-## Technologies Used
+- [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
+- [x] **The web app displays a title**
+- [x] **The web app displays at least five unique list items, each with at least three displayed attributes (such as title, text, and image)**
+- [x] **The user can click on each item in the list to see a detailed view of it, including all database fields**
+  - [x] **Each detail view is a unique endpoint — e.g. `localhost:3000/books/the-road` and `localhost:3000/books/station-eleven`**
+  - [x] *Note: The unique URL for each detail view is visible in the browser address bar and in the "View Details" links on every book card.*
+- [x] **The web app serves an appropriate 404 page when no matching route is defined**
+- [x] **The web app is styled using Picocss**
 
-| Layer      | Technology                            |
-|------------|---------------------------------------|
-| Runtime    | Node.js                               |
-| Server     | Express 5                             |
-| HTML       | HTML5 (semantic elements throughout)  |
-| CSS        | CSS3, CSS Custom Properties, Grid     |
-| JavaScript | Vanilla ES6+ (no frameworks)          |
-| Styling    | PicoCSS v2 (CDN)                      |
-| Dev tool   | nodemon (auto-reload on file changes) |
+The following **optional** features are implemented:
 
-## Folder Structure
+- [x] The web app displays items in a unique format — responsive card grid with cover images, hover effects, and a post-apocalyptic dark theme
 
-```
-the-last-library/
-├── server.js           # Express server — serves /public as static files
-├── package.json        # Dependencies and npm scripts
-├── README.md
-└── public/
-    ├── index.html      # Home page
-    ├── books.html      # Books collection page
-    ├── authors.html    # Authors page
-    ├── about.html      # About page
-    ├── css/
-    │   └── styles.css  # Custom post-apocalyptic theme
-    ├── js/
-    │   ├── books.js    # Shared BOOKS + AUTHORS data arrays
-    │   └── script.js   # Render, search, and sort logic
-    └── assets/         # Local image assets (if any)
-```
+The following **additional** features are implemented:
 
-## Installation
+- [x] Live search bar that filters all 14 books by title in real time (no page reload)
+- [x] Sort controls: sort the collection by rating (high → low), title (A → Z), or publication year (newest first)
+- [x] Authors page with 6 featured author biography cards
+- [x] About page explaining post-apocalyptic fiction as a genre and detailing the project tech stack
+- [x] Sticky frosted-glass navigation header with active-page highlighting
+- [x] Responsive layout down to mobile (320 px) using CSS Grid and Flexbox
+- [x] HTML-escaped server-rendered detail pages (safe against injection)
 
-1. **Clone the repository**
+## Video Walkthrough
 
-   ```bash
-   git clone https://github.com/Mig1a/Post-Apocalyptic-Book.git
-   cd Post-Apocalyptic-Book
-   ```
+**Note: please be sure to show each unique book detail URL in the walkthrough.**
 
-2. **Install dependencies**
+Here's a walkthrough of implemented required features:
 
-   ```bash
-   npm install
-   ```
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-   This installs Express (production) and nodemon (development).
+<!-- Replace this with whatever GIF tool you used! -->
+GIF created with ... Add GIF tool here
+<!-- Recommended tools:
+[Kap](https://getkap.co/) for macOS
+[ScreenToGif](https://www.screentogif.com/) for Windows
+[peek](https://github.com/phw/peek) for Linux -->
 
-## Running the Project
+## Notes
 
-### Production mode
+**Architecture:** Book data lives in two places — `data/books.js` (an ES module imported by the server for route generation) and `public/js/books.js` (a browser-global copy for client-side search/sort/render). Both contain identical data; `data/books.js` is the canonical source.
 
-```bash
-npm start
-```
+**Detail page routing:** Express generates each book's detail page dynamically from the `BOOKS` array using a URL slug derived from the title (e.g. "The Road" → `/books/the-road`). No templating engine is used — pages are built with template literals.
 
-Starts the server with `node server.js`. Visit [http://localhost:3000](http://localhost:3000).
-
-### Development mode (auto-reload)
-
-```bash
-npm run dev
-```
-
-Starts the server with `nodemon server.js`. The server restarts automatically whenever you save a change to `server.js`. Frontend file changes (HTML, CSS, JS) are reflected immediately on the next browser refresh — no restart needed.
-
-## Pages
-
-| URL              | Description                                       |
-|------------------|---------------------------------------------------|
-| `/`              | Home — hero, stats, featured books, CTA           |
-| `/books.html`    | Full collection — search + sort + 14 book cards   |
-| `/authors.html`  | Six author cards with biographies                 |
-| `/about.html`    | Project info, genre explainer, tech stack         |
-
-## Data
-
-All book and author data lives in [`public/js/books.js`](public/js/books.js) as two plain global arrays:
-
-- `BOOKS` — 14 entries with `id`, `title`, `author`, `year`, `rating`, `description`, `image`
-- `AUTHORS` — 6 entries with `id`, `name`, `born`, `died`, `nationality`, `bio`, `books`, `image`
-
-To add a book, append an entry to the `BOOKS` array. No other file needs to change.
-
-## Screenshots
-
-_Add screenshots here after running the project locally._
-
-| Page    | Screenshot |
-|---------|------------|
-| Home    | _(pending)_ |
-| Books   | _(pending)_ |
-| Authors | _(pending)_ |
-| About   | _(pending)_ |
+**404 handling:** A catch-all middleware at the bottom of `server.js` serves `public/404.html` with a 404 status for any unmatched route.
 
 ## License
 
-ISC
+Copyright [2026] [Million Aboye]
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+> http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
